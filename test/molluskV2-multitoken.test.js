@@ -864,6 +864,7 @@ contract('Mollusk', ([creator, summoner, applicant1, applicant2, processor, dele
   })
 
   describe('token count limit - add tokens during operation', async () => {
+    let token_whitelist_limit = 10
     beforeEach(async () => {
       // deploy with maximum - 1 tokens, so we can add 1 more
       mollusk = await Mollusk.new(
@@ -1454,7 +1455,7 @@ contract('Mollusk', ([creator, summoner, applicant1, applicant2, processor, dele
       }
     })
 
-    it.only('can still ragequit and withdraw', async function() {
+    it('can still ragequit and withdraw', async function() {
       this.timeout(1200000)
 
       const memberData = await mollusk.members(proposal1.applicant)
